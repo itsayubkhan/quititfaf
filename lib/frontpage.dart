@@ -1,21 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:quitit/Achievments.dart';
 import 'package:quitit/Acievmentspages/calender.dart';
 import 'package:quitit/Acievmentspages/infinitypage.dart';
+import 'package:quitit/Controllers/datasender.dart';
 import 'package:quitit/Health.dart';
 import 'package:quitit/beatcravings.dart';
 import 'package:quitit/overallprogress.dart';
 import 'package:quitit/widgets/frontnav.dart';
 
 class Frontpage extends StatelessWidget{
-  final String data1;
-  final String data2;
-  final String data3;
-  final String data4;
-
-  Frontpage({required this.data1, required this.data2, required this.data3, required this.data4});
+  final gs = GetStorage();
+  final DataController dataController = Get.find(); // Find the controller
 
   @override
   Widget build(BuildContext context){
@@ -57,9 +58,10 @@ class Frontpage extends StatelessWidget{
                               Image.asset('assets/img/IMG_20240514_175142.jpg',
                                 width: 38,),
                               SizedBox(height: 5,),
-                              Text('$data2',style: TextStyle(
+                              Obx(() => Text('${dataController.daysSinceQuitting}',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.white
                               ),),
+                              ),
                               Text('days\n quit',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.grey[400]
                               ),),
@@ -71,9 +73,10 @@ class Frontpage extends StatelessWidget{
                             children: [
                               Image.asset('assets/img/IMG_20240514_175210.jpg',
                                 width: 38,),
-                              Text('8',style: TextStyle(
-                                fontFamily: 'Eina',color: Colors.white
-                              ),),
+                              Obx(() => Text('${dataController.cigarettesAvoided}',style: TextStyle(
+                                  fontFamily: 'Eina',color: Colors.white
+                                ),),
+                              ),
                               Text('cigarettes\n avoided',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.grey[400]
                               ),),
@@ -86,9 +89,10 @@ class Frontpage extends StatelessWidget{
                               Image.asset('assets/img/IMG_20240514_175234.jpg',
                                 width: 38,),
                               SizedBox(height: 5,),
-                              Text('86.32',style: TextStyle(
+                              Obx(() => Text('${dataController.moneySaved.toStringAsFixed(0)}',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.white
                               ),),
+                              ),
                               Text('rupees\nsaved',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.grey[400]
                               ),),
@@ -101,9 +105,10 @@ class Frontpage extends StatelessWidget{
                               Image.asset('assets/img/IMG_20240514_175303.jpg',
                                 width: 38,),
                               SizedBox(height: 5,),
-                              Text('51m',style: TextStyle(
+                              Obx(() => Text('${dataController.timeSaved.toStringAsFixed(0)}',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.white
                               ),),
+                              ),
                               Text('won\nback',style: TextStyle(
                                   fontFamily: 'Eina',color: Colors.grey[400]
                               ),),
@@ -326,6 +331,16 @@ class Frontpage extends StatelessWidget{
                     ),
                   ],
                 ),
+
+              ),
+            ),
+            Obx(() => Column(
+                children: [
+                  Text('Cigarettes avoided: ${dataController.cigarettesAvoided}', style: TextStyle(color: Colors.white,fontFamily: 'Eina')),
+                  Text('Money saved: ${dataController.moneySaved.toStringAsFixed(0)} Rupees', style: TextStyle(color: Colors.white,fontFamily: 'Eina')),
+                  Text('Time saved: ${dataController.timeSaved.toStringAsFixed(0)} minutes', style: TextStyle(color: Colors.white,fontFamily: 'Eina')),
+                  Text('Days since quitting: ${dataController.daysSinceQuitting}', style: TextStyle(color: Colors.white,fontFamily: 'Eina')),
+                ],
               ),
             ),
           ],

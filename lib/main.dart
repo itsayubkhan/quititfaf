@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quitit/Achievments.dart';
 import 'package:quitit/Acievmentspages/Clothesoff.dart';
@@ -10,7 +11,6 @@ import 'package:quitit/Acievmentspages/infinitypage.dart';
 import 'package:quitit/Health.dart';
 import 'package:quitit/Settings.dart';
 import 'package:quitit/Settingspages/Advancedsettings.dart';
-import 'package:quitit/Settingspages/Formersmokerdata.dart';
 import 'package:quitit/Settingspages/Signin.dart';
 import 'package:quitit/Settingspages/Subscriptionstatus.dart';
 import 'package:quitit/Settingspages/Upgradequitnow.dart';
@@ -20,10 +20,14 @@ import 'package:quitit/community.dart';
 import 'package:quitit/frontpage.dart';
 import 'package:quitit/overallprogress.dart';
 import 'package:quitit/profile.dart';
+import 'package:quitit/Settingspages/Formersmokedata.dart';
+
+import 'Controllers/datasender.dart';
 
 void main() async {
   await GetStorage.init();
   runApp(const MyApp());
+  Get.put(DataController());
 }
 
 class MyApp extends StatelessWidget {
@@ -51,11 +55,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: Frontpage(data1: '1', data2: '2', data3: '3', data4: '4',),
+      home: Frontpage()
     );
   }
 }
-

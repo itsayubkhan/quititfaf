@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:quitit/Settings.dart';
 import 'package:quitit/profile.dart';
 
-class Frontnav extends StatelessWidget{
+class Frontnav extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       color: Color(0xFF272728),
@@ -13,22 +13,48 @@ class Frontnav extends StatelessWidget{
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 19,),
-            child: SizedBox(child: Image.asset
-              ('assets/img/IMG_20240514_160615.jpg')),
+            padding: const EdgeInsets.only(
+              left: 19,
+            ),
+            child: SizedBox(
+                child: Image.asset('assets/img/IMG_20240514_160615.jpg')),
           ),
-          SizedBox(width: 85,),
-          IconButton(onPressed: (){}, icon: Icon(Icons.share,color: Colors.white,)),
-          IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder:
-                (context) => settings(data1: '', data2: '', data3: '', data4: '',),));
-          }, icon: Icon(Icons.settings,color: Colors.white
-            ,)),
-          SizedBox(width: 2,),
+          SizedBox(
+            width: 85,
+          ),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.share,
+                color: Colors.white,
+              )),
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => settings(),
+                    ));
+              },
+              icon: Icon(
+                Icons.settings,
+                color: Colors.white,
+              )),
+          SizedBox(
+            width: 2,
+          ),
           InkWell(
-            onTap: (){Navigator.push(context, MaterialPageRoute(builder:
-                (context) => profile(),));},
-              child: Image.asset('assets/img/IMG_20240514_160917.jpg',width: 35,))
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => profile(),
+                    ));
+              },
+              child: Image.asset(
+                'assets/img/IMG_20240514_160917.jpg',
+                width: 35,
+              ))
         ],
       ),
     );
