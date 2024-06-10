@@ -10,6 +10,9 @@ class MyPage extends StatefulWidget {
   State<MyPage> createState() => _MyPageState();
 }
 
+bool achievementUnlocked = false;
+bool newachievementUnlocked = false;
+
 class _MyPageState extends State<MyPage> {
   bool changesSaved = false;
   final userdata = GetStorage();
@@ -42,6 +45,10 @@ class _MyPageState extends State<MyPage> {
     quitDateTime = userdata.read('quitDateTime') != null
         ? DateTime.parse(userdata.read('quitDateTime'))
         : null;
+
+    achievementUnlocked = userdata.read('achievementUnlocked') ?? false;
+    newachievementUnlocked = userdata.read('newachievementUnlocked') ?? false;
+
     calculateData();
   }
 
@@ -50,19 +57,22 @@ class _MyPageState extends State<MyPage> {
     perPack = int.tryParse(controller3.text) ?? 0;
     packPrice = double.tryParse(controller4.text) ?? 0.0;
 
-    // Calculate cigarettes avoided
     cigarettesAvoided = dailyAmount;
 
-    // Calculate money saved
     if (perPack > 0) {
       moneySaved = (cigarettesAvoided / perPack) * packPrice;
     } else {
       moneySaved = 0.0;
     }
 
-    // Calculate time saved (assuming each cigarette takes 5 minutes to smoke)
-    timeSaved = cigarettesAvoided * 5;
+    timeSaved = cigarettesAvoided * 5; // Calculate time saved in minutes
+
+    // Convert to hours if time saved exceeds 60 minutes
+    if (timeSaved >= 60) {
+      timeSaved /= 60.0; // Convert to hours
+    }
   }
+
 
   void updateAndCalculateData() {
     userdata.write('controller1', controller1.text);
@@ -72,14 +82,20 @@ class _MyPageState extends State<MyPage> {
     if (quitDateTime != null) {
       userdata.write('quitDateTime', quitDateTime.toString());
     }
+
+    userdata.write('achievementUnlocked', achievementUnlocked);
+    userdata.write('newachievementUnlocked', newachievementUnlocked);
+
     changesSaved = true;
     calculateData();
 
-    // Update the data in the controller
-    dataController.updateData(cigarettesAvoided, moneySaved, timeSaved, quitDateTime != null ? DateTime.now().difference(quitDateTime!).inDays : 0);
+    dataController.updateData(cigarettesAvoided, moneySaved, timeSaved,
+        quitDateTime != null ? DateTime.now().difference(quitDateTime!).inDays : 0);
 
     setState(() {});
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -248,11 +264,28 @@ class _MyPageState extends State<MyPage> {
                   ),
                 ),
                 SizedBox(height: 20.0),
+                if (newachievementUnlocked) // Show achievement if unlocked
+                  Text(
+                    'Congratulations! You have unlocked the achiev58ement!',
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                if (achievementUnlocked) // Show achievement if unlocked
+                  Text(
+                    'Congratulations! You have unlocked the achievement!',
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                SizedBox(height: 20.0),
                 ElevatedButton(
                   onPressed: () {
                     updateAndCalculateData();
                   },
-                  child: Text('updateAndCalculate',),
+                  child: Text('Update and Calculate'),
                 ),
               ],
             ),

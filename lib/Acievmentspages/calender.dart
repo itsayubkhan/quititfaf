@@ -1,7 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-class Calender extends StatelessWidget{
+import '../Controllers/datasender.dart';
+
+
+
+class Calender extends StatefulWidget{
+  @override
+  State<Calender> createState() => _CalenderState();
+}
+
+class _CalenderState extends State<Calender> {
+  final gs = GetStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    CAas();
+  }
+
+  final DataController dataController = Get.find();
+
+  void CAas() {
+    int daysSinceQuitting = dataController.daysSinceQuitting.value;
+    bool achievementUnlocked = gs.read('asfafs1') ?? false; // Add null check here
+    if (daysSinceQuitting >= 3 && !achievementUnlocked) {
+      gs.write('asfafs1', true);
+      Get.snackbar(
+        'Achievement Unlocked',
+        'You have unlocked a new achievement!',
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +53,15 @@ class Calender extends StatelessWidget{
       body: Column(
         children: [
           SizedBox(height: 100,),
-          Center(child: Image.asset('assets/img/Screenshot_2024-05-19-14-51-35-15.jpg',
-            width: 200,)),
+          Center(child: Obx(() {
+            CAas();
+            if (gs.read('asfafs1') == true) {
+              return Image.asset('assets/img/Screenshot_2024-05-19-14-51-35-15.jpg',
+                width: 200,);
+            } else {
+              return Image.asset('safsaf');
+            }
+          }),),
           SizedBox(height: 20,),
           Text('First cross on the calendar',style: TextStyle(fontSize: 16,
               color:
@@ -42,39 +83,45 @@ class Calender extends StatelessWidget{
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 90,
-        child: Center(
-          child: Container(
-              decoration: BoxDecoration(
-                  color: Color(0xFF222223),
-                  borderRadius: BorderRadius.circular(10)
-              ),
-              height: 70,
-              width: 340,
-              child: ListTile(
-                trailing: Container(
-                  height: 50,
-                  width: 120,
+      bottomNavigationBar: Obx(() {
+        CAas();
+        if (gs.read('CA') == true) {
+          return Container(
+            height: 90,
+            child: Center(
+              child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFF44AE7E),
+                      color: Color(0xFF222223),
+                      borderRadius: BorderRadius.circular(10)
                   ),
-                  child: Center(
-                    child: Text('Share',style: TextStyle(color: Colors.white,
-                        fontFamily: 'Eina',fontSize: 14),),
-                  ),
-                ),
-                title: Text('You did it!',style: TextStyle(fontFamily: 'Eina',
-                    color: Colors.white
-                ),),
-                subtitle: Text('Your health has improved',style: TextStyle
-                  (color: Colors.grey[400],fontSize: 13),),
-              )
-          ),
-        ),
-      ),
+                  height: 70,
+                  width: 340,
+                  child: ListTile(
+                    trailing: Container(
+                      height: 50,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xFF44AE7E),
+                      ),
+                      child: Center(
+                        child: Text('Share',style: TextStyle(color: Colors.white,
+                            fontFamily: 'Eina',fontSize: 14),),
+                      ),
+                    ),
+                    title: Text('You did it!',style: TextStyle(fontFamily: 'Eina',
+                        color: Colors.white
+                    ),),
+                    subtitle: Text('Your health has improved',style: TextStyle
+                      (color: Colors.grey[400],fontSize: 13),),
+                  )
+              ),
+            ),
+          );
+        } else {
+          return Container();
+        }
+      }),
     );
   }
-
 }
