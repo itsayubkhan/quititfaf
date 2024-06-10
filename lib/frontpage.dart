@@ -35,9 +35,9 @@ class _FrontpageState extends State<Frontpage> {
 
   void CA() {
     int daysSinceQuitting = dataController.daysSinceQuitting.value;
-    bool achievementUnlocked = gs.read('saaa11') ?? false; // Add null check here
+    bool achievementUnlocked = gs.read('Ca') ?? false; // Add null check here
     if (daysSinceQuitting >= 3 && !achievementUnlocked) {
-      gs.write('saaa11', true);
+      gs.write('Ca', true);
       Get.snackbar(
         'Achievement Unlocked',
         'You have unlocked a new achievement!',
@@ -57,7 +57,7 @@ class _FrontpageState extends State<Frontpage> {
             children: [
               Obx(() {
                 CA();
-                if (gs.read('saaa11') == true) {
+                if (gs.read('Ca') == true) {
                   return Text('Unlocked', style: TextStyle(color: Colors.green));
                 } else {
                   return Text('Locked', style: TextStyle(color: Colors.red));
