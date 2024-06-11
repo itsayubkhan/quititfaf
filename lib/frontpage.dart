@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -7,8 +9,8 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quitit/Achievments.dart';
-import 'package:quitit/Acievmentspages/calender.dart';
-import 'package:quitit/Acievmentspages/infinitypage.dart';
+import 'package:quitit/Acievmentspages/nosfor1day.dart';
+import 'package:quitit/Acievmentspages/nosfor1week.dart';
 import 'package:quitit/Controllers/datasender.dart';
 import 'package:quitit/Health.dart';
 import 'package:quitit/Settingspages/Formersmokedata.dart';
@@ -17,37 +19,39 @@ import 'package:quitit/overallprogress.dart';
 import 'package:quitit/widgets/frontnav.dart';
 
 class Frontpage extends StatefulWidget{
+
   @override
   State<Frontpage> createState() => _FrontpageState();
 }
 
 class _FrontpageState extends State<Frontpage> {
-
   final gs = GetStorage();
+  final DataController dataController = Get.find();
+  late StreamController<DateTime> _timerStreamController;
+  late Stream<DateTime> _timerStream;
+  late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    CA();
+    _timerStreamController = StreamController<DateTime>();
+    _timerStream = _timerStreamController.stream;
+    // Start a timer that emits events every second
+    _timer = Timer.periodic(Duration(seconds: 1), (_) {
+      _timerStreamController.add(DateTime.now());
+    });
   }
 
-  final DataController dataController = Get.find();
-
-  void CA() {
-    int daysSinceQuitting = dataController.daysSinceQuitting.value;
-    bool achievementUnlocked = gs.read('Ca') ?? false; // Add null check here
-    if (daysSinceQuitting >= 3 && !achievementUnlocked) {
-      gs.write('Ca', true);
-      Get.snackbar(
-        'Achievement Unlocked',
-        'You have unlocked a new achievement!',
-      );
-    }
+  @override
+  void dispose() {
+    _timer.cancel(); // Cancel the timer when the widget is disposed
+    _timerStreamController.close(); // Close the stream controller
+    super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context){
+
     return Scaffold(
       backgroundColor: Color(0xFF121213),
       body: SingleChildScrollView(
@@ -55,17 +59,144 @@ class _FrontpageState extends State<Frontpage> {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              Obx(() {
-                CA();
-                if (gs.read('Ca') == true) {
-                  return Text('Unlocked', style: TextStyle(color: Colors.green));
-                } else {
-                  return Text('Locked', style: TextStyle(color: Colors.red));
-                }
-              }),
               Container(color: Color(0xFF272728),height: 35,),
               Frontnav(),
-              Image.asset('assets/img/IMG_20240514_172523.jpg',height: 232),
+              Image.asset('assets/img/IMG_20240611_214148.jpg',height: 150),
+              StreamBuilder<DateTime>(
+                stream: _timerStream,
+                initialData: DateTime.now(),
+                builder: (context, snapshot) {
+                  final selectedDateTime = dataController.selectedDateTime.value;
+                  if (selectedDateTime != null) {
+                    Duration timeElapsed = snapshot.data!.difference(selectedDateTime);
+                    int days = timeElapsed.inDays;
+                    int hours = timeElapsed.inHours.remainder(24);
+                    int minutes = timeElapsed.inMinutes.remainder(60);
+                    int seconds = timeElapsed.inSeconds.remainder(60);
+                    if (dataController.daysSinceQuitting == 0) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 90),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '$hours',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 25,fontFamily: 'Eina', color: Colors.white),
+                                  ),
+                                  Text(
+                                    'hours',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontFamily: 'Eina',  color: Colors.grey[300]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '$minutes',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 25,fontFamily: 'Eina', color: Colors.white),
+                                  ),
+                                  Text(
+                                    'minutes',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontFamily: 'Eina',  color: Colors.grey[300]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '$seconds',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 25,fontFamily: 'Eina', color: Colors.white),
+                                  ),
+                                  Text(
+                                    'seconds',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontFamily: 'Eina',  color: Colors.grey[300]),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 90),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '$days',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 25,fontFamily: 'Eina', color: Colors.white),
+                                  ),
+                                  Text(
+                                    'days',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontFamily: 'Eina', color: Colors.grey[300]),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '$hours',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 25,fontFamily: 'Eina', color: Colors.white),
+                                  ),
+                                  Text(
+                                    'hours',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontFamily: 'Eina',  color: Colors.grey[300]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '$minutes',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 25,fontFamily: 'Eina', color: Colors.white),
+                                  ),
+                                  Text(
+                                    'minutes',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontFamily: 'Eina',  color: Colors.grey[300]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  } else {
+                    return Text(
+                      'No date and time selected',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    );
+                  }
+                },
+              ),
               SizedBox(height: 10,),
               InkWell(
                 onTap: () {
@@ -236,26 +367,35 @@ class _FrontpageState extends State<Frontpage> {
                             child: InkWell(
                               onTap: (){
                                 Navigator.push(context, MaterialPageRoute(builder:
-                                    (context) => Ip(),));
+                                    (context) => for1day(),));
                               },
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Color(0xFF222223),
                                   borderRadius: BorderRadius.circular(10)
                                 ),
-                                height: 175,
+                                height: 179,
                                 width: 150,
                                 child: Column(
                                   children: [
                                     SizedBox(height: 10,),
-                                    Image.asset(
-                                      'assets/img/IMG_20240515_143953.jpg', // Default image
-                                      width: 110,
-                                    ),
+                                    Obx(() {
+                                      if (dataController.daysSinceQuitting >= 1) {
+                                        return Image.asset(
+                                          'assets/img/A/Ca1.jpg', // Default image
+                                          width: 100,
+                                        );
+                                      } else {
+                                        return Image.asset(
+                                          'assets/img/A/Ca.jpg', // Default image
+                                          width: 100,
+                                        );
+                                      }
+                                    }),
                                     SizedBox(height: 10,),
-                                    Text('To infinity and ...',style: TextStyle
+                                    Text('First cross on t...',style: TextStyle
                                       (color: Colors.white),),
-                                    Text(' 5 cigrattes\nnon-smoked',style: TextStyle
+                                    Text('No smoking\n  for 1 day',style: TextStyle
                                       (color: Colors.grey[200],fontSize: 12),),
                                   ],
                                 ),
@@ -267,7 +407,7 @@ class _FrontpageState extends State<Frontpage> {
                             child: InkWell(
                               onTap: (){
                                 Navigator.push(context, MaterialPageRoute(builder:
-                                    (context) => Calender(),));
+                                    (context) => for1week(),));
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -279,12 +419,23 @@ class _FrontpageState extends State<Frontpage> {
                                 child: Column(
                                   children: [
                                     SizedBox(height: 10,),
-                                    Image.asset('assets/img/IMG_20240515_144058'
-                                        '.jpg',width: 100,),
+                                    Obx(() {
+                                      if (dataController.daysSinceQuitting >= 1) {
+                                        return Image.asset(
+                                          'assets/img/A/sts1.jpg', // Default image
+                                          width: 120,
+                                        );
+                                      } else {
+                                        return Image.asset(
+                                          'assets/img/A/sts.jpg', // Default image
+                                          width: 120,
+                                        );
+                                      }
+                                    }),
                                     SizedBox(height: 10,),
-                                    Text('First cross on t...',style: TextStyle
+                                    Text('Step by Step',style: TextStyle
                                       (color: Colors.white),),
-                                    Text('No smoking\n  for 1 day',style: TextStyle
+                                    Text('No smoking\n for 2 days',style: TextStyle
                                       (color: Colors.grey[200],fontSize: 12),),
                                   ],
                                 ),
@@ -381,6 +532,7 @@ class _FrontpageState extends State<Frontpage> {
 
                 ),
               ),
+              SizedBox(height: 10),
             ],
           ),
         ),

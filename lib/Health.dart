@@ -35,7 +35,7 @@ class health extends StatelessWidget {
           )
         ],
         title: Text(
-          'Achievments',
+          'Health',
           style: TextStyle(
             fontFamily: 'Eina',
             color: Colors.white,
@@ -43,449 +43,452 @@ class health extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF60AFFE),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Row(
                 children: [
+                  SizedBox(
+                    width: 30,
+                  ),
                   Text(
-                    'The carbon monoxide level in your blood\ndrops to '
-                    'normal',
-                    style: TextStyle(color: Colors.white),
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 10,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 240,
-                  decoration: BoxDecoration(
-                      color: Color(0xFFF2A18C),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 68,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
-                children: [
-                  Text(
-                    'Your heart rate and blood pressure drop',
-                    style: TextStyle(color: Colors.white),
+                  Container(
+                    height: 20,
+                    width: 280,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF60AFFE),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 10,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'The carbon monoxide level in your blood\ndrops to '
+                      'normal',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
                 ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF60AFFE),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
                 children: [
+                  SizedBox(
+                    width: 30,
+                  ),
                   Text(
-                    'The carbon monoxide level in your blood\ndrops to '
-                    'normal',
-                    style: TextStyle(color: Colors.white),
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 10,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 240,
-                  decoration: BoxDecoration(
-                      color: Color(0xFFF2A18C),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 68,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
-                children: [
-                  Text(
-                    'Your heart rate and blood pressure drop',
-                    style: TextStyle(color: Colors.white),
+                  Container(
+                    height: 20,
+                    width: 240,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFF2A18C),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 68,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'Your heart rate and blood pressure drop',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
                 ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF60AFFE),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
                 children: [
+                  SizedBox(
+                    width: 30,
+                  ),
                   Text(
-                    'The carbon monoxide level in your blood\ndrops to '
-                    'normal',
-                    style: TextStyle(color: Colors.white),
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 10,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 240,
-                  decoration: BoxDecoration(
-                      color: Color(0xFFF2A18C),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 68,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
-                children: [
-                  Text(
-                    'Your heart rate and blood pressure drop',
-                    style: TextStyle(color: Colors.white),
+                  Container(
+                    height: 20,
+                    width: 260,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF60AFFE),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 10,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'The carbon monoxide level in your blood\ndrops to '
+                      'normal',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
                 ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF60AFFE),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
                 children: [
+                  SizedBox(
+                    width: 30,
+                  ),
                   Text(
-                    'The carbon monoxide level in your blood\ndrops to '
-                    'normal',
-                    style: TextStyle(color: Colors.white),
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 10,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 20,
-                  width: 240,
-                  decoration: BoxDecoration(
-                      color: Color(0xFFF2A18C),
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(
-                  width: 68,
-                ),
-                Text(
-                  '100',
-                  style: TextStyle(color: Colors.grey[500]),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65),
-              child: Row(
-                children: [
-                  Text(
-                    'Your heart rate and blood pressure drop',
-                    style: TextStyle(color: Colors.white),
+                  Container(
+                    height: 20,
+                    width: 240,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFF2A18C),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 68,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: Colors.green,
-                  )
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              'Based on the World Health Organization data',
-              style:
-                  TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
-            ),
-            Image.asset(
-              'assets/img/IMG_20240525_161818.jpg',
-              width: 100,
-            )
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'Your heart rate and blood pressure drop',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 20,
+                    width: 300,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF60AFFE),
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'The carbon monoxide level in your blood\ndrops to '
+                      'normal',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 20,
+                    width: 240,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFF2A18C),
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    width: 68,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'Your heart rate and blood pressure drop',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 20,
+                    width: 300,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF60AFFE),
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'The carbon monoxide level in your blood\ndrops to '
+                      'normal',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 20,
+                    width: 240,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFF2A18C),
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    width: 68,
+                  ),
+                  Text(
+                    '100',
+                    style: TextStyle(color: Colors.grey[500]),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 65),
+                child: Row(
+                  children: [
+                    Text(
+                      'Your heart rate and blood pressure drop',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Text(
+                'Based on the World Health Organization data',
+                style:
+                    TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+              ),
+              Image.asset(
+                'assets/img/IMG_20240525_161818.jpg',
+                width: 100,
+              )
+            ],
+          ),
         ),
       ),
     );

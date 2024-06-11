@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:quitit/frontpage.dart';
+import 'package:intl/intl.dart';
 import 'package:quitit/Controllers/datasender.dart'; // Import the controller
 
 class MyPage extends StatefulWidget {
@@ -12,6 +12,8 @@ class MyPage extends StatefulWidget {
 
 bool achievementUnlocked = false;
 bool newachievementUnlocked = false;
+DateTime _selectedDate = DateTime.now();
+TimeOfDay _selectedTime = TimeOfDay.now();
 
 class _MyPageState extends State<MyPage> {
   bool changesSaved = false;
@@ -42,15 +44,26 @@ class _MyPageState extends State<MyPage> {
     controller2.text = userdata.read('controller2') ?? '';
     controller3.text = userdata.read('controller3') ?? '';
     controller4.text = userdata.read('controller4') ?? '';
-    quitDateTime = userdata.read('quitDateTime') != null
-        ? DateTime.parse(userdata.read('quitDateTime'))
-        : null;
+
+    // Retrieve 'quitDateTime' from GetStorage
+    final String? quitDateTimeString = userdata.read('quitDateTime');
+    // Declare a DateTime variable to hold the parsed value
+    DateTime? quitDateTime;
+
+    // Parse the 'quitDateTimeString' into a DateTime object
+    if (quitDateTimeString != null && quitDateTimeString.isNotEmpty) {
+      quitDateTime = DateTime.parse(quitDateTimeString);
+    }
+
+    // Assign the parsed DateTime to the class variable
+    this.quitDateTime = quitDateTime;
 
     achievementUnlocked = userdata.read('achievementUnlocked') ?? false;
     newachievementUnlocked = userdata.read('newachievementUnlocked') ?? false;
 
     calculateData();
   }
+
 
   void calculateData() {
     dailyAmount = int.tryParse(controller2.text) ?? 0;
@@ -79,9 +92,13 @@ class _MyPageState extends State<MyPage> {
     userdata.write('controller2', controller2.text);
     userdata.write('controller3', controller3.text);
     userdata.write('controller4', controller4.text);
-    if (quitDateTime != null) {
-      userdata.write('quitDateTime', quitDateTime.toString());
-    }
+
+    // Format quitDateTime to include date and time
+    String formattedQuitDateTime = quitDateTime != null
+        ? DateFormat('yyyy-MM-dd HH:mm:ss').format(quitDateTime!)
+        : '';
+
+    userdata.write('quitDateTime', formattedQuitDateTime);
 
     userdata.write('achievementUnlocked', achievementUnlocked);
     userdata.write('newachievementUnlocked', newachievementUnlocked);
@@ -142,18 +159,20 @@ class _MyPageState extends State<MyPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DateTimePicker(
-                  type: DateTimePickerType.date,
-                  dateMask: 'd MMM, yyyy',
-                  initialValue: quitDateTime?.toString() ?? '',
+                  type: DateTimePickerType.dateTime, // Change to dateTime
+                  dateMask: 'MMM d, yyyy', // Date and time format with AM/PM
+                  initialValue: quitDateTime?.toString() ?? '', // Initial value with date and time
                   firstDate: DateTime(2000),
                   lastDate: DateTime.now(),
-                  dateLabelText: 'Pick date',
+                  dateLabelText: 'Pick date and time', // Updated label
                   selectableDayPredicate: (date) {
                     return true;
                   },
                   onChanged: (val) {
                     setState(() {
+                      // Parse selected value to DateTime
                       quitDateTime = DateTime.parse(val);
+                      dataController.setSelectedDateTime(DateTime.parse(val));
                     });
                     calculateData();
                     updateAndCalculateData();
@@ -264,28 +283,14 @@ class _MyPageState extends State<MyPage> {
                   ),
                 ),
                 SizedBox(height: 20.0),
-                if (newachievementUnlocked) // Show achievement if unlocked
-                  Text(
-                    'Congratulations! You have unlocked the achiev58ement!',
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                if (achievementUnlocked) // Show achievement if unlocked
-                  Text(
-                    'Congratulations! You have unlocked the achievement!',
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                SizedBox(height: 20.0),
                 ElevatedButton(
                   onPressed: () {
                     updateAndCalculateData();
                   },
-                  child: Text('Update and Calculate'),
+                  child: Text('Update and Calculate',style: TextStyle(fontFamily: 'Eina'),),style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Color(0xFF64C397),
+                ),
                 ),
               ],
             ),

@@ -7,12 +7,12 @@ import '../Controllers/datasender.dart';
 
 
 
-class Calender extends StatefulWidget{
+class for2weeks extends StatefulWidget{
   @override
-  State<Calender> createState() => _CalenderState();
+  State<for2weeks> createState() => _CalenderState();
 }
 
-class _CalenderState extends State<Calender> {
+class _CalenderState extends State<for2weeks> {
   final gs = GetStorage();
 
   final DataController dataController = Get.find();
@@ -28,27 +28,21 @@ class _CalenderState extends State<Calender> {
           , onPressed: () { Navigator.pop(context); },),
         actions: [
           Icon(Icons.share,color: Colors.white,),
-          SizedBox(width: 10,)
+          SizedBox(width: 30,)
         ],
       ),
-      body: Column(
+      body: dataController.daysSinceQuitting >= 14
+          ? Column(
         children: [
           SizedBox(height: 100,),
-          Center(child: Obx(() {
-            if (dataController.daysSinceQuitting >= 1) {
-              return Image.asset('assets/img/Screenshot_2024-05-19-14-51-35-15.jpg',
-                width: 200,);
-            } else {
-              return Image.asset('safsaf');
-            }
-          }),),
+          Image.asset('assets/img/A/ctc1.jpg', width: 200,),
           SizedBox(height: 20,),
-          Text('First cross on the calendar',style: TextStyle(fontSize: 16,
+          Text('Crush the calender',style: TextStyle(fontSize: 16,
               color:
-          Colors.white),),
+              Colors.white),),
           SizedBox(height: 5,),
-          Text('No smoking for 1 day',style: TextStyle(fontSize: 16,color:
-          Colors.white),),
+          Text('No smoking for 2 weeks',style: TextStyle(fontSize: 16,color:
+          Colors.grey[400]),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -57,13 +51,26 @@ class _CalenderState extends State<Calender> {
                 padding: const EdgeInsets.only(bottom: 5),
                 child: Image.asset('assets/img/IMG_20240515_144025.jpg',width: 40,),
               ),
-              Text('May 15,2024 at 04:38',style: TextStyle(color: Colors
-                  .grey[400],),)
             ],
-          )
+          ),
         ],
+      )
+          : Center(
+        child: Column(
+          children: [
+            SizedBox(height: 100,),
+            Image.asset('assets/img/A/ctc.jpg',width: 200,),
+            SizedBox(height: 20,),
+            Text('Crush the calender',style: TextStyle(fontSize: 16,
+                color:
+                Colors.white),),
+            SizedBox(height: 5,),
+            Text('No smoking for 2 weeks',style: TextStyle(fontSize: 16,color:
+            Colors.grey[400]),),
+          ],
+        ),
       ),
-      bottomNavigationBar: dataController.daysSinceQuitting >= 1
+      bottomNavigationBar: dataController.daysSinceQuitting >= 14
           ? Container(
         height: 90,
         child: Center(
@@ -108,7 +115,10 @@ class _CalenderState extends State<Calender> {
           ),
         ),
       )
-          : null,
+          : Padding(
+        padding: const EdgeInsets.only(bottom: 40),
+        child: Icon(Icons.lock,color: Colors.white,),
+      ),
     );
   }
 }

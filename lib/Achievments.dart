@@ -1,18 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quitit/Acievmentspages/Clothesoff.dart';
-import 'package:quitit/Acievmentspages/Saturday.dart';
-import 'package:quitit/Acievmentspages/StepbyStep.dart';
-import 'package:quitit/Acievmentspages/Superpowers.dart';
-import 'package:quitit/Acievmentspages/calender.dart';
-import 'package:quitit/Acievmentspages/infinitypage.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:quitit/Acievmentspages/nosfor5day.dart';
+import 'package:quitit/Acievmentspages/nosfor10day.dart';
+import 'package:quitit/Acievmentspages/nosfor2day.dart';
+import 'package:quitit/Acievmentspages/nosfor2week.dart';
+import 'package:quitit/Acievmentspages/nosfor1day.dart';
+import 'package:quitit/Acievmentspages/nosfor1week.dart';
+
+import 'Controllers/datasender.dart';
 
 class achievments extends StatelessWidget{
+
+  final gs = GetStorage();
+
+  final DataController dataController = Get.find();
+
   @override
   Widget build (BuildContext context){
     return Scaffold(
-
-      backgroundColor: Color(0xFF1A1C1C),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         scrolledUnderElevation: 0.0,
         backgroundColor: Color(0xFF272728),
@@ -21,7 +29,7 @@ class achievments extends StatelessWidget{
         actions: [Image.asset('assets/img/IMG_20240519_142420.jpg',width: 30,),
         SizedBox(width: 5,),
         Padding(
-          padding: const EdgeInsets.only(right: 15),
+          padding: const EdgeInsets.only(right: 25),
           child: Text('7 / 82',style: TextStyle(fontSize: 18,color: Colors.white),),
         )
         ],
@@ -38,7 +46,7 @@ class achievments extends StatelessWidget{
                   child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Ip(),));
+                          (context) => for5days(),));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -47,15 +55,32 @@ class achievments extends StatelessWidget{
                       ),
                       height: 230,
                       width: 150,
-                      child: Column(
+                      child: dataController.daysSinceQuitting >= 5
+                          ? Column(
                         children: [
-                          SizedBox(height: 15,),
-                          Image.asset('assets/img/IMG_20240515_143953'
-                              '.jpg',width: 140,),
+                          SizedBox(height: 35,),
+                      Image.asset(
+                        'assets/img/A/hismpa1.jpg', // Default image
+                        width: 130,
+                      ),
                           SizedBox(height: 20,),
-                          Text('To infinity and b...',style: TextStyle
+                          Text('Home is where...',style: TextStyle
                             (color: Colors.white),),
-                          Text(' 5 cigrattes\nnon-smoked',style: TextStyle
+                          Text('No smoking\n  for 5 days',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 28,),
+                            Image.asset(
+                                'assets/img/A/hismpa.jpg', // Default image
+                                width: 130,
+                              ),
+                          SizedBox(height: 20,),
+                          Text('Home is where...',style: TextStyle
+                            (color: Colors.white),),
+                          Text('No smoking\n  for 5 days',style: TextStyle
                             (color: Colors.grey[200],fontSize: 12),),
                         ],
                       ),
@@ -67,7 +92,7 @@ class achievments extends StatelessWidget{
                   child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Calender(),));
+                          (context) => for1day(),));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -76,11 +101,22 @@ class achievments extends StatelessWidget{
                       ),
                       height: 230,
                       width: 150,
-                      child: Column(
+                      child: dataController.daysSinceQuitting >= 1
+                          ? Column(
                         children: [
-                          SizedBox(height: 10,),
-                          Image.asset('assets/img/IMG_20240515_144058'
-                              '.jpg',width: 130,),
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/Ca1.jpg',width: 125,),
+                          SizedBox(height: 23,),
+                          Text('First cross on t...',style: TextStyle
+                            (color: Colors.white),),
+                          Text('No smoking\n  for 1 day',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 15,),
+                          Image.asset('assets/img/A/Ca.jpg',width: 125,),
                           SizedBox(height: 23,),
                           Text('First cross on t...',style: TextStyle
                             (color: Colors.white),),
@@ -102,7 +138,7 @@ class achievments extends StatelessWidget{
                   child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Superpowers(),));
+                          (context) => for1week(),));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -111,15 +147,26 @@ class achievments extends StatelessWidget{
                       ),
                       height: 230,
                       width: 150,
-                      child: Column(
+                      child: dataController.daysSinceQuitting >= 7
+                          ? Column(
                         children: [
-                          SizedBox(height: 15,),
-                          Image.asset('assets/img/IMG_20240519_141614.jpg',width:
-                          120,),
-                          SizedBox(height: 15,),
-                          Text('Superpowers',style: TextStyle
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/FTR1.jpg',width: 125,),
+                          SizedBox(height: 23,),
+                          Text('Following the ro...',style: TextStyle
                             (color: Colors.white),),
-                          Text('   You won 60\nminsutes of life',style: TextStyle
+                          Text(' No smoking\nfor one week',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/FTR.jpg',width: 125,),
+                          SizedBox(height: 23,),
+                          Text('Following the ro...',style: TextStyle
+                            (color: Colors.white),),
+                          Text(' No smoking\nfor one week',style: TextStyle
                             (color: Colors.grey[200],fontSize: 12),),
                         ],
                       ),
@@ -131,7 +178,7 @@ class achievments extends StatelessWidget{
                   child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Saturday(),));
+                          (context) => for10days(),));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -140,14 +187,26 @@ class achievments extends StatelessWidget{
                       ),
                       height: 230,
                       width: 150,
-                      child: Column(
+                      child: dataController.daysSinceQuitting >= 10
+                          ? Column(
                         children: [
-                          SizedBox(height: 20,),
-                          Image.asset('assets/img/IMG_20240519_141655.jpg',width: 130,),
-                          SizedBox(height: 21,),
-                          Text('Saturday night f...',style: TextStyle
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/lP1.jpg',width: 125,),
+                          SizedBox(height: 23,),
+                          Text('Less paper',style: TextStyle
                             (color: Colors.white),),
-                          Text('10 cigrattes\nnon-smoked',style: TextStyle
+                          Text('No smoking\n for 10 days',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/lP.jpg',width: 125,),
+                          SizedBox(height: 20,),
+                          Text('Less paper',style: TextStyle
+                            (color: Colors.white),),
+                          Text('No smoking\n for 10 days',style: TextStyle
                             (color: Colors.grey[200],fontSize: 12),),
                         ],
                       ),
@@ -165,7 +224,7 @@ class achievments extends StatelessWidget{
                   child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Clothesoff(),));
+                          (context) => for2days(),));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -174,231 +233,66 @@ class achievments extends StatelessWidget{
                       ),
                       height: 230,
                       width: 150,
-                      child: Column(
+                      child:  dataController.daysSinceQuitting >= 2
+                          ? Column(
                         children: [
-                          SizedBox(height: 22,),
-                          Image.asset('assets/img/IMG_20240519_141713.jpg',width: 140,),
-                          SizedBox(height: 27,),
-                          Text('Clothes off',style: TextStyle
-                            (color: Colors.white),),
-                          Text('15 cigrattes\nnon-smoked',style: TextStyle
-                            (color: Colors.grey[200],fontSize: 12),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => SBS(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10,),
-                          Image.asset('assets/img/IMG_20240519_141728.jpg',width: 130,),
-                          SizedBox(height: 23,),
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/sts1.jpg',width: 125,),
+                          SizedBox(height: 20,),
                           Text('Step by Step',style: TextStyle
                             (color: Colors.white),),
-                          Text('No smoking\n  for 1 day',style: TextStyle
+                          Text('No smoking\n  for 2 day',style: TextStyle
                             (color: Colors.grey[200],fontSize: 12),),
                         ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-              ],
-            ),
-            SizedBox(height: 5,),
-            Row(
-              children: [
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Ip(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
+                      )
+                          : Column(
                         children: [
-                          SizedBox(height: 15,),
-                          Image.asset('assets/img/IMG_20240515_143953'
-                              '.jpg',width: 140,),
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/sts.jpg',width: 125,),
                           SizedBox(height: 20,),
-                          Text('To infinity and b...',style: TextStyle
-                            (color: Colors.white),),
-                          Text(' 5 cigrattes\nnon-smoked',style: TextStyle
-                            (color: Colors.grey[200],fontSize: 12),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Calender(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10,),
-                          Image.asset('assets/img/IMG_20240515_144058'
-                              '.jpg',width: 130,),
-                          SizedBox(height: 23,),
-                          Text('First cross on t...',style: TextStyle
-                            (color: Colors.white),),
-                          Text('No smoking\n  for 1 day',style: TextStyle
-                            (color: Colors.grey[200],fontSize: 12),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-              ],
-            ),
-            SizedBox(height: 5,),
-            Row(
-              children: [
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Superpowers(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 15,),
-                          Image.asset('assets/img/IMG_20240519_141614.jpg',width:
-                          120,),
-                          SizedBox(height: 15,),
-                          Text('Superpowers',style: TextStyle
-                            (color: Colors.white),),
-                          Text('   You won 60\nminsutes of life',style: TextStyle
-                            (color: Colors.grey[200],fontSize: 12),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Saturday(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 20,),
-                          Image.asset('assets/img/IMG_20240519_141655.jpg',width: 130,),
-                          SizedBox(height: 21,),
-                          Text('Saturday night f...',style: TextStyle
-                            (color: Colors.white),),
-                          Text('10 cigrattes\nnon-smoked',style: TextStyle
-                            (color: Colors.grey[200],fontSize: 12),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-              ],
-            ),
-            SizedBox(height: 5,),
-            Row(
-              children: [
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => Clothesoff(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 22,),
-                          Image.asset('assets/img/IMG_20240519_141713.jpg',width: 140,),
-                          SizedBox(height: 27,),
-                          Text('Clothes off',style: TextStyle
-                            (color: Colors.white),),
-                          Text('15 cigrattes\nnon-smoked',style: TextStyle
-                            (color: Colors.grey[200],fontSize: 12),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5,),
-                Expanded(
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:
-                          (context) => SBS(),));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF222223),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      height: 230,
-                      width: 150,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10,),
-                          Image.asset('assets/img/IMG_20240519_141728.jpg',width: 130,),
-                          SizedBox(height: 23,),
                           Text('Step by Step',style: TextStyle
                             (color: Colors.white),),
-                          Text('No smoking\n  for 1 day',style: TextStyle
+                          Text('No smoking\n  for 2 day',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => for2weeks(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child: dataController.daysSinceQuitting >= 14
+                          ? Column(
+                        children: [
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/ctc1.jpg',width: 125,),
+                          SizedBox(height: 23,),
+                          Text('Crush the calen...',style: TextStyle
+                            (color: Colors.white),),
+                          Text('No smoking\n for 2 weeks',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 23,),
+                          Image.asset('assets/img/A/ctc.jpg',width: 125,),
+                          SizedBox(height: 20,),
+                          Text('Crush the calen...',style: TextStyle
+                            (color: Colors.white),),
+                          Text('No smoking\n for 2 weeks',style: TextStyle
                             (color: Colors.grey[200],fontSize: 12),),
                         ],
                       ),
@@ -408,6 +302,7 @@ class achievments extends StatelessWidget{
                 SizedBox(width: 5,),
               ],
             ),
+
             SizedBox(height: 5,),
           ],
         ),
