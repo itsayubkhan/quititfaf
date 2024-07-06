@@ -35,9 +35,9 @@ class _CalenderState extends State<for2days> {
           ? Column(
         children: [
           SizedBox(height: 100,),
-          Image.asset('assets/img/A/sts1.jpg', width: 200,),
+          Image.asset('assets/img/A/exercise.png', width: 200,),
           SizedBox(height: 20,),
-          Text('Step by Step',style: TextStyle(fontSize: 16,
+          Text('Double Day Dynamo',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
@@ -59,9 +59,9 @@ class _CalenderState extends State<for2days> {
         child: Column(
           children: [
             SizedBox(height: 100,),
-            Image.asset('assets/img/A/sts.jpg',width: 200,),
+            Image.asset('assets/img/A/exercise~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('Step by Step',style: TextStyle(fontSize: 16,
+            Text('Double Day Dynamo',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),

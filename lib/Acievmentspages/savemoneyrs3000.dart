@@ -2,18 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:quitit/Acievmentspages/nosfor1week.dart';
 
 import '../Controllers/datasender.dart';
 
-
-
-class for1day extends StatefulWidget{
+class rs3000 extends StatefulWidget{
   @override
-  State<for1day> createState() => _CalenderState();
+  State<rs3000> createState() => _CalenderState();
 }
 
-class _CalenderState extends State<for1day> {
+class _CalenderState extends State<rs3000> {
   final gs = GetStorage();
 
   final DataController dataController = Get.find();
@@ -32,17 +29,17 @@ class _CalenderState extends State<for1day> {
           SizedBox(width: 30,)
         ],
       ),
-      body: dataController.daysSinceQuitting >= 1
+      body: dataController.moneySaved >= 3000
           ? Column(
         children: [
           SizedBox(height: 100,),
-          Image.asset('assets/img/A/dumbbell.png', width: 200,),
+          Image.asset('assets/img/A/exercise.png', width: 200,),
           SizedBox(height: 20,),
-          Text('Single Day Champion',style: TextStyle(fontSize: 16,
+          Text('save3000',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
-          Text('No smoking for 1 day',style: TextStyle(fontSize: 16,color:
+          Text('Save money Rs 3000',style: TextStyle(fontSize: 16,color:
           Colors.grey[400]),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,22 +53,22 @@ class _CalenderState extends State<for1day> {
           ),
         ],
       )
-        : Center(
-          child: Column(
+          : Center(
+        child: Column(
           children: [
             SizedBox(height: 100,),
-            Image.asset('assets/img/A/dumbbell~2.png',width: 200,),
+            Image.asset('assets/img/A/exercise~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('Single Day Champion',style: TextStyle(fontSize: 16,
+            Text('save3000',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),
-            Text('No smoking for 1 day',style: TextStyle(fontSize: 16,color:
+            Text('Save money Rs 3000',style: TextStyle(fontSize: 16,color:
             Colors.grey[400]),),
           ],
-           ),
         ),
-      bottomNavigationBar: dataController.daysSinceQuitting >= 1
+      ),
+      bottomNavigationBar: dataController.moneySaved >= 3000
           ? Container(
         height: 90,
         child: Center(

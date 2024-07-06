@@ -20,7 +20,8 @@ class OB extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/img/IMG_20240523_150909.jpg',width: 180,),
+            Image.asset('assets/img/data-recovery.png',width: 180,),
+            SizedBox(height: 20,),
             Text('Sign in needed',style: TextStyle(fontFamily: 'Eina',color: Colors.white ,
                 fontSize: 20),),
             SizedBox(height: 10,),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -35,13 +36,13 @@ class _CalenderState extends State<for5days> {
           ? Column(
         children: [
           SizedBox(height: 100,),
-          Image.asset('assets/img/A/hismpa1.jpg', width: 200,),
+          Image.asset('assets/img/A/watering-plants.png',width: 200,),
           SizedBox(height: 20,),
           Text('Home is where my plants are',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
-          Text('No smoking for 5 days',style: TextStyle(fontSize: 16,color:
+          Text('Five-Day Fortress',style: TextStyle(fontSize: 16,color:
           Colors.grey[400]),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,9 +60,9 @@ class _CalenderState extends State<for5days> {
         child: Column(
           children: [
             SizedBox(height: 100,),
-            Image.asset('assets/img/A/hismpa.jpg',width: 200,),
+            Image.asset('assets/img/A/watering-plants~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('Home is where my plants are',style: TextStyle(fontSize: 16,
+            Text('Five-Day Fortress',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),

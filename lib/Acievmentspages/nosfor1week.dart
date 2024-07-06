@@ -35,9 +35,9 @@ class _CalenderState extends State<for1week> {
           ? Column(
         children: [
           SizedBox(height: 100,),
-          Image.asset('assets/img/A/FTR1.jpg', width: 200,),
+          Image.asset('assets/img/A/dumble.png', width: 200,),
           SizedBox(height: 20,),
-          Text('Following the road',style: TextStyle(fontSize: 16,
+          Text('Seven-Day Sentinel',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
@@ -59,9 +59,9 @@ class _CalenderState extends State<for1week> {
         child: Column(
           children: [
             SizedBox(height: 100,),
-            Image.asset('assets/img/A/FTR.jpg',width: 200,),
+            Image.asset('assets/img/A/dumble~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('First cross on the calendar',style: TextStyle(fontSize: 16,
+            Text('Seven-Day Sentinel',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),

@@ -200,7 +200,6 @@ class _FrontpageState extends State<Frontpage> {
               SizedBox(height: 10,),
               InkWell(
                 onTap: () {
-                  print(gs.read('achievementUnlocked'));
                   Navigator.push(context, MaterialPageRoute(builder: (context) => overallprogress()));
                 },
                 child: Container(
@@ -227,7 +226,7 @@ class _FrontpageState extends State<Frontpage> {
                           Expanded(
                             child: Column(
                               children: [
-                                Image.asset('assets/img/IMG_20240514_175142.jpg', width: 38),
+                                Image.asset('assets/img/calendar.png', width: 30),
                                 SizedBox(height: 5),
                                 Obx(() => Text('${dataController.daysSinceQuitting}', style: TextStyle(
                                     fontFamily: 'Eina', color: Colors.white),
@@ -241,7 +240,8 @@ class _FrontpageState extends State<Frontpage> {
                           Expanded(
                             child: Column(
                               children: [
-                                Image.asset('assets/img/IMG_20240514_175210.jpg', width: 38),
+                                Image.asset('assets/img/smoke.png', width: 30),
+                                SizedBox(height: 5),
                                 Obx(() => Text('${dataController.cigarettesAvoided}', style: TextStyle(
                                     fontFamily: 'Eina', color: Colors.white),
                                 )),
@@ -254,7 +254,7 @@ class _FrontpageState extends State<Frontpage> {
                           Expanded(
                             child: Column(
                               children: [
-                                Image.asset('assets/img/IMG_20240514_175234.jpg', width: 38),
+                                Image.asset('assets/img/coin.png', width: 35,),
                                 SizedBox(height: 5),
                                 Obx(() => Text('${dataController.moneySaved.toStringAsFixed(0)}', style: TextStyle(
                                     fontFamily: 'Eina', color: Colors.white),
@@ -268,7 +268,7 @@ class _FrontpageState extends State<Frontpage> {
                           Expanded(
                             child: Column(
                               children: [
-                                Image.asset('assets/img/IMG_20240514_175303.jpg', width: 38),
+                                Image.asset('assets/img/clock.png', width: 30),
                                 SizedBox(height: 5),
                                 Obx(() {
                                   if (dataController.timeSaved >= 60) {
@@ -313,11 +313,12 @@ class _FrontpageState extends State<Frontpage> {
                       TextStyle
                         (fontFamily: 'Eina',color: Colors.white,fontSize: 16),),
                     )),
+                    SizedBox(height: 8,),
                     Row(
                       children: [
                         SizedBox(width: 40,),
-                        Image.asset('assets/img/IMG_20240515_142401.jpg',width:
-                        80,),
+                        Image.asset('assets/img/solidarity.png',width:
+                        70,),
                         SizedBox(width: 20,),
                         Text('demodemo\nI know seems small but this is\nhuge '
                             'for me',style: TextStyle(color: Colors
@@ -382,18 +383,18 @@ class _FrontpageState extends State<Frontpage> {
                                     Obx(() {
                                       if (dataController.daysSinceQuitting >= 1) {
                                         return Image.asset(
-                                          'assets/img/A/Ca1.jpg', // Default image
-                                          width: 100,
+                                          'assets/img/A/dumbbell.png', // Default image
+                                          width: 80,
                                         );
                                       } else {
                                         return Image.asset(
-                                          'assets/img/A/Ca.jpg', // Default image
-                                          width: 100,
+                                          'assets/img/A/dumbbell~2.png', // Default image
+                                          width: 80,
                                         );
                                       }
                                     }),
                                     SizedBox(height: 10,),
-                                    Text('First cross on t...',style: TextStyle
+                                    Text('Single Day Champion',style: TextStyle
                                       (color: Colors.white),),
                                     Text('No smoking\n  for 1 day',style: TextStyle
                                       (color: Colors.grey[200],fontSize: 12),),
@@ -422,18 +423,18 @@ class _FrontpageState extends State<Frontpage> {
                                     Obx(() {
                                       if (dataController.daysSinceQuitting >= 1) {
                                         return Image.asset(
-                                          'assets/img/A/sts1.jpg', // Default image
-                                          width: 120,
+                                          'assets/img/A/exercise.png', // Default image
+                                          width: 80,
                                         );
                                       } else {
                                         return Image.asset(
-                                          'assets/img/A/sts.jpg', // Default image
-                                          width: 120,
+                                          'assets/img/A/exercise~2.png', // Default image
+                                          width: 80,
                                         );
                                       }
                                     }),
                                     SizedBox(height: 10,),
-                                    Text('Step by Step',style: TextStyle
+                                    Text('Double Day Dynamo',style: TextStyle
                                       (color: Colors.white),),
                                     Text('No smoking\n for 2 days',style: TextStyle
                                       (color: Colors.grey[200],fontSize: 12),),
@@ -474,7 +475,7 @@ class _FrontpageState extends State<Frontpage> {
                       Row(
                         children: [
                           SizedBox(width: 30,),
-                          Image.asset('assets/img/IMG_20240515_144123.jpg',width:
+                          Image.asset('assets/img/seo-report.png',width:
                           60,),
                           SizedBox(width: 20,),
                           Text('The carbon monoxide level\nin your blood drops '
@@ -513,12 +514,12 @@ class _FrontpageState extends State<Frontpage> {
                         TextStyle
                           (fontFamily: 'Eina',color: Colors.white,fontSize: 16),),
                       )),
-                      SizedBox(height: 5,),
+                      SizedBox(height: 10,),
                       Row(
                         children: [
                           SizedBox(width: 30,),
-                          Image.asset('assets/img/IMG_20240515_145942.jpg',width:
-                          70,),
+                          Image.asset('assets/img/lifestyle.png',width:
+                          60,),
                           SizedBox(width: 20,),
                           Text('Small changes to your lifestyle\nto help you '
                               'beat the temptation\nto light up',

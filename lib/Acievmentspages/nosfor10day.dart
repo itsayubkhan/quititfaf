@@ -35,9 +35,9 @@ class _CalenderState extends State<for10days> {
           ? Column(
         children: [
           SizedBox(height: 100,),
-          Image.asset('assets/img/A/lP1.jpg', width: 200,),
+          Image.asset('assets/img/A/no-smoking.png', width: 200,),
           SizedBox(height: 20,),
-          Text('Less paper',style: TextStyle(fontSize: 16,
+          Text('Ten-Day Trailblazer',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
@@ -59,9 +59,9 @@ class _CalenderState extends State<for10days> {
         child: Column(
           children: [
             SizedBox(height: 100,),
-            Image.asset('assets/img/A/lP.jpg',width: 200,),
+            Image.asset('assets/img/A/no-smoking~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('Less paper',style: TextStyle(fontSize: 16,
+            Text('Ten-Day Trailblazer',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),

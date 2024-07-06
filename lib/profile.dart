@@ -191,13 +191,12 @@ class profile extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 10,),
           Image.asset(
-            'assets/img/IMG_20240520_143907.jpg',
-            width: 200,
+            'assets/img/save.png',
+            width: 130,
           ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 30,),
           Text(
             '  Create an account\nto save your progress',
             style: TextStyle(fontFamily: 'Eina', color: Color(0xFF59B78B)),

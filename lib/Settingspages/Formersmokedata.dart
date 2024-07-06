@@ -1,3 +1,6 @@
+
+
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -32,11 +35,34 @@ class _MyPageState extends State<MyPage> {
   double moneySaved = 0.0;
   double timeSaved = 0.0;
   DateTime? quitDateTime;
+  DateTime lastCalculatedDate = DateTime.now();
+
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
     readData();
+    _startTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(minutes: 1), (timer) {
+      final currentDate = DateTime.now();
+      if (currentDate.day != lastCalculatedDate.day) {
+        // Update the last calculated date to the new day
+        lastCalculatedDate = currentDate;
+        setState(() {
+          calculateData();
+        });
+      }
+    });
   }
 
   void readData() {
@@ -45,12 +71,12 @@ class _MyPageState extends State<MyPage> {
     controller3.text = userdata.read('controller3') ?? '';
     controller4.text = userdata.read('controller4') ?? '';
 
-    // Retrieve 'quitDateTime' from GetStorage
+
     final String? quitDateTimeString = userdata.read('quitDateTime');
-    // Declare a DateTime variable to hold the parsed value
+
     DateTime? quitDateTime;
 
-    // Parse the 'quitDateTimeString' into a DateTime object
+
     if (quitDateTimeString != null && quitDateTimeString.isNotEmpty) {
       quitDateTime = DateTime.parse(quitDateTimeString);
     }
@@ -64,13 +90,14 @@ class _MyPageState extends State<MyPage> {
     calculateData();
   }
 
-
   void calculateData() {
     dailyAmount = int.tryParse(controller2.text) ?? 0;
     perPack = int.tryParse(controller3.text) ?? 0;
     packPrice = double.tryParse(controller4.text) ?? 0.0;
 
-    cigarettesAvoided = dailyAmount;
+    // Calculate the difference in hours from the quit date and time
+    int hoursPassed = DateTime.now().difference(quitDateTime ?? DateTime.now()).inHours;
+    cigarettesAvoided = (dailyAmount / 24 * hoursPassed).toInt();
 
     if (perPack > 0) {
       moneySaved = (cigarettesAvoided / perPack) * packPrice;
@@ -86,7 +113,6 @@ class _MyPageState extends State<MyPage> {
     }
   }
 
-
   void updateAndCalculateData() {
     userdata.write('controller1', controller1.text);
     userdata.write('controller2', controller2.text);
@@ -97,22 +123,18 @@ class _MyPageState extends State<MyPage> {
     String formattedQuitDateTime = quitDateTime != null
         ? DateFormat('yyyy-MM-dd HH:mm:ss').format(quitDateTime!)
         : '';
-
     userdata.write('quitDateTime', formattedQuitDateTime);
 
     userdata.write('achievementUnlocked', achievementUnlocked);
     userdata.write('newachievementUnlocked', newachievementUnlocked);
 
     changesSaved = true;
-    calculateData();
 
     dataController.updateData(cigarettesAvoided, moneySaved, timeSaved,
         quitDateTime != null ? DateTime.now().difference(quitDateTime!).inDays : 0);
 
     setState(() {});
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +182,7 @@ class _MyPageState extends State<MyPage> {
               children: [
                 DateTimePicker(
                   type: DateTimePickerType.dateTime, // Change to dateTime
-                  dateMask: 'MMM d, yyyy', // Date and time format with AM/PM
+                  dateMask: 'MMM d, yyyy ', // Date and time format with AM/PM
                   initialValue: quitDateTime?.toString() ?? '', // Initial value with date and time
                   firstDate: DateTime(2000),
                   lastDate: DateTime.now(),
@@ -170,7 +192,6 @@ class _MyPageState extends State<MyPage> {
                   },
                   onChanged: (val) {
                     setState(() {
-                      // Parse selected value to DateTime
                       quitDateTime = DateTime.parse(val);
                       dataController.setSelectedDateTime(DateTime.parse(val));
                     });
@@ -285,6 +306,7 @@ class _MyPageState extends State<MyPage> {
                 SizedBox(height: 20.0),
                 ElevatedButton(
                   onPressed: () {
+                    calculateData();
                     updateAndCalculateData();
                   },
                   child: Text('Update and Calculate',style: TextStyle(fontFamily: 'Eina'),),style: ElevatedButton.styleFrom(

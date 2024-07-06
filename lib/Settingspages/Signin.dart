@@ -14,8 +14,9 @@ class Signin extends StatelessWidget{
       ),
       body: Column(
         children: [
-          Image.asset('assets/img/IMG_20240523_162220.jpg',width: 220,),
-          SizedBox(height: 15,),
+          SizedBox(height: 100,),
+          Image.asset('assets/img/refer.png',width: 100,),
+          SizedBox(height: 50,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Container(
