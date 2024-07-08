@@ -29,17 +29,17 @@ class _CalenderState extends State<timesaved20h> {
           SizedBox(width: 30,)
         ],
       ),
-      body: dataController.timeSaved >= 10
+      body: dataController.timeSaved >= 20
           ? Column(
         children: [
           SizedBox(height: 100,),
           Image.asset('assets/img/A/exercise.png', width: 200,),
           SizedBox(height: 20,),
-          Text('10',style: TextStyle(fontSize: 16,
+          Text('20',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
-          Text('time save 2h',style: TextStyle(fontSize: 16,color:
+          Text('time save 20h',style: TextStyle(fontSize: 16,color:
           Colors.grey[400]),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,16 +59,16 @@ class _CalenderState extends State<timesaved20h> {
             SizedBox(height: 100,),
             Image.asset('assets/img/A/exercise~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('2',style: TextStyle(fontSize: 16,
+            Text('20',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),
-            Text('time save 2h',style: TextStyle(fontSize: 16,color:
+            Text('time save 20h',style: TextStyle(fontSize: 16,color:
             Colors.grey[400]),),
           ],
         ),
       ),
-      bottomNavigationBar: dataController.timeSaved >= 2
+      bottomNavigationBar: dataController.timeSaved >= 20
           ? Container(
         height: 90,
         child: Center(

@@ -14,6 +14,8 @@ import 'package:quitit/Acievmentspages/nosfor1week.dart';
 import 'package:quitit/Acievmentspages/nosfor7weeks.dart';
 import 'package:quitit/Acievmentspages/nosfor8weeks.dart';
 import 'package:quitit/Acievmentspages/savemoney100rs.dart';
+import 'package:quitit/Acievmentspages/timesaved2h.dart';
+import 'package:quitit/Acievmentspages/timesaved6h.dart';
 
 import 'Acievmentspages/nosfor10weeks.dart';
 import 'Acievmentspages/nosfor11weeks.dart';
@@ -59,6 +61,14 @@ import 'Acievmentspages/savemoneyrs4500.dart';
 import 'Acievmentspages/savemoneyrs500.dart';
 import 'Acievmentspages/savemoneyrs5000.dart';
 import 'Acievmentspages/savemoneyrs6000.dart';
+import 'Acievmentspages/timesaved10h.dart';
+import 'Acievmentspages/timesaved15h.dart';
+import 'Acievmentspages/timesaved20h.dart';
+import 'Acievmentspages/timesaved25h.dart';
+import 'Acievmentspages/timesaved30h.dart';
+import 'Acievmentspages/timesaved35h.dart';
+import 'Acievmentspages/timesaved40h.dart';
+import 'Acievmentspages/timesaved45h.dart';
 import 'Controllers/datasender.dart';
 
 class achievments extends StatelessWidget{
@@ -2529,6 +2539,436 @@ class achievments extends StatelessWidget{
                           Text('40',style: TextStyle
                             (color: Colors.white),),
                           Text('No smoking\nfor 40 weeks',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved2h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child:  dataController.timeSaved >= 2
+                          ? Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('2',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 2h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise~2.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('2',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 2h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved6h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child: dataController.timeSaved >= 6
+                          ? Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('6',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 6h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training~2.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('6',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 6h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved10h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child:  dataController.timeSaved >= 10
+                          ? Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('10',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 10h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise~2.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('10',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 10h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved15h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child: dataController.timeSaved >= 15
+                          ? Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('15',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 15h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training~2.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('15',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 15h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved20h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child:  dataController.timeSaved >= 20
+                          ? Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('20',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 20h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise~2.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('20',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 20h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved25h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child: dataController.timeSaved >= 25
+                          ? Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('25',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 25h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training~2.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('25',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 25h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved30h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child:  dataController.timeSaved >= 30
+                          ? Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('30',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 30h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise~2.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('30',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 30h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved35h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child: dataController.timeSaved >= 35
+                          ? Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('35',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 35h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training~2.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('35',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 35h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved40h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child:  dataController.timeSaved >= 40
+                          ? Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('40',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 40h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 35,),
+                          Image.asset('assets/img/A/exercise~2.png',width: 100,),
+                          SizedBox(height: 20,),
+                          Text('40',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 40h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:
+                          (context) => timesaved45h(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF222223),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      height: 230,
+                      width: 150,
+                      child: dataController.timeSaved >= 45
+                          ? Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('45',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 45h',style: TextStyle
+                            (color: Colors.grey[200],fontSize: 12),),
+                        ],
+                      )
+                          : Column(
+                        children: [
+                          SizedBox(height: 32,),
+                          Image.asset('assets/img/A/training~2.png',width: 100,),
+                          SizedBox(height: 23,),
+                          Text('45',style: TextStyle
+                            (color: Colors.white),),
+                          Text('time save 45h',style: TextStyle
                             (color: Colors.grey[200],fontSize: 12),),
                         ],
                       ),

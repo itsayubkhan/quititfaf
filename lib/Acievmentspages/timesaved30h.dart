@@ -5,12 +5,12 @@ import 'package:get_storage/get_storage.dart';
 
 import '../Controllers/datasender.dart';
 
-class timesaved15h extends StatefulWidget{
+class timesaved30h extends StatefulWidget{
   @override
-  State<timesaved15h> createState() => _CalenderState();
+  State<timesaved30h> createState() => _CalenderState();
 }
 
-class _CalenderState extends State<timesaved15h> {
+class _CalenderState extends State<timesaved30h> {
   final gs = GetStorage();
 
   final DataController dataController = Get.find();
@@ -29,17 +29,17 @@ class _CalenderState extends State<timesaved15h> {
           SizedBox(width: 30,)
         ],
       ),
-      body: dataController.timeSaved >= 15
+      body: dataController.timeSaved >= 30
           ? Column(
         children: [
           SizedBox(height: 100,),
           Image.asset('assets/img/A/exercise.png', width: 200,),
           SizedBox(height: 20,),
-          Text('15',style: TextStyle(fontSize: 16,
+          Text('30',style: TextStyle(fontSize: 16,
               color:
               Colors.white),),
           SizedBox(height: 5,),
-          Text('time save 15h',style: TextStyle(fontSize: 16,color:
+          Text('time save 30h',style: TextStyle(fontSize: 16,color:
           Colors.grey[400]),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,16 +59,16 @@ class _CalenderState extends State<timesaved15h> {
             SizedBox(height: 100,),
             Image.asset('assets/img/A/exercise~2.png',width: 200,),
             SizedBox(height: 20,),
-            Text('15',style: TextStyle(fontSize: 16,
+            Text('30',style: TextStyle(fontSize: 16,
                 color:
                 Colors.white),),
             SizedBox(height: 5,),
-            Text('time save 15h',style: TextStyle(fontSize: 16,color:
+            Text('time save 30h',style: TextStyle(fontSize: 16,color:
             Colors.grey[400]),),
           ],
         ),
       ),
-      bottomNavigationBar: dataController.timeSaved >= 15
+      bottomNavigationBar: dataController.timeSaved >= 30
           ? Container(
         height: 90,
         child: Center(

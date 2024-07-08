@@ -68,7 +68,7 @@ class _CalenderState extends State<timesaved10h> {
           ],
         ),
       ),
-      bottomNavigationBar: dataController.timeSaved >= 2
+      bottomNavigationBar: dataController.timeSaved >= 10
           ? Container(
         height: 90,
         child: Center(
