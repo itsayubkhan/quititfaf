@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:quitit/Settingspages/CalculatePage.dart';
 import 'package:quitit/Settingspages/Advancedsettings.dart';
 import 'package:quitit/Settingspages/Signin.dart';
 import 'package:quitit/Settingspages/Subscriptionstatus.dart';
@@ -60,7 +61,7 @@ class settings extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MyPage(),
+                              builder: (context) => datapage(),
                             ));
                       },
                       child: ListTile(

@@ -1,12 +1,12 @@
-
-
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_cupertino_date_picker_fork/flutter_cupertino_date_picker_fork.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:quitit/Controllers/datasender.dart'; // Import the controller
+import 'package:quitit/Components/MyTextfield.dart';
+import 'package:quitit/Controllers/datepicker.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -21,12 +21,11 @@ TimeOfDay _selectedTime = TimeOfDay.now();
 class _MyPageState extends State<MyPage> {
   bool changesSaved = false;
   final userdata = GetStorage();
-  final DataController dataController = Get.find(); // Find the controller
+  final datepicker dateController = Get.put(datepicker());
 
-  final controller1 = TextEditingController();
-  final controller2 = TextEditingController();
-  final controller3 = TextEditingController();
-  final controller4 = TextEditingController();
+  final DailyTotalCiggarette = TextEditingController();
+  final CiggarettePerPack = TextEditingController();
+  final PackPrice = TextEditingController();
 
   int dailyAmount = 0;
   int perPack = 0;
@@ -53,7 +52,7 @@ class _MyPageState extends State<MyPage> {
   }
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(minutes: 1), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       final currentDate = DateTime.now();
       if (currentDate.day != lastCalculatedDate.day) {
         // Update the last calculated date to the new day
@@ -66,16 +65,13 @@ class _MyPageState extends State<MyPage> {
   }
 
   void readData() {
-    controller1.text = userdata.read('controller1') ?? '';
-    controller2.text = userdata.read('controller2') ?? '';
-    controller3.text = userdata.read('controller3') ?? '';
-    controller4.text = userdata.read('controller4') ?? '';
-
+    DailyTotalCiggarette.text = userdata.read('DailyTotalCiggarette') ?? '';
+    CiggarettePerPack.text = userdata.read('CiggarettePerPack') ?? '';
+    PackPrice.text = userdata.read('PackPrice') ?? '';
 
     final String? quitDateTimeString = userdata.read('quitDateTime');
 
     DateTime? quitDateTime;
-
 
     if (quitDateTimeString != null && quitDateTimeString.isNotEmpty) {
       quitDateTime = DateTime.parse(quitDateTimeString);
@@ -91,12 +87,13 @@ class _MyPageState extends State<MyPage> {
   }
 
   void calculateData() {
-    dailyAmount = int.tryParse(controller2.text) ?? 0;
-    perPack = int.tryParse(controller3.text) ?? 0;
-    packPrice = double.tryParse(controller4.text) ?? 0.0;
+    dailyAmount = int.tryParse(DailyTotalCiggarette.text) ?? 0;
+    perPack = int.tryParse(CiggarettePerPack.text) ?? 0;
+    packPrice = double.tryParse(PackPrice.text) ?? 0.0;
 
     // Calculate the difference in hours from the quit date and time
-    int hoursPassed = DateTime.now().difference(quitDateTime ?? DateTime.now()).inHours;
+    int hoursPassed =
+        DateTime.now().difference(quitDateTime ?? DateTime.now()).inHours;
     cigarettesAvoided = (dailyAmount / 24 * hoursPassed).toInt();
 
     if (perPack > 0) {
@@ -114,10 +111,9 @@ class _MyPageState extends State<MyPage> {
   }
 
   void updateAndCalculateData() {
-    userdata.write('controller1', controller1.text);
-    userdata.write('controller2', controller2.text);
-    userdata.write('controller3', controller3.text);
-    userdata.write('controller4', controller4.text);
+    userdata.write('controller1', DailyTotalCiggarette.text);
+    userdata.write('CiggarettePerPack', CiggarettePerPack.text);
+    userdata.write('PackPrice', PackPrice.text);
 
     // Format quitDateTime to include date and time
     String formattedQuitDateTime = quitDateTime != null
@@ -130,10 +126,6 @@ class _MyPageState extends State<MyPage> {
 
     changesSaved = true;
 
-    dataController.updateData(cigarettesAvoided, moneySaved, timeSaved,
-        quitDateTime != null ? DateTime.now().difference(quitDateTime!).inDays : 0);
-
-    setState(() {});
   }
 
   @override
@@ -157,14 +149,16 @@ class _MyPageState extends State<MyPage> {
                     actions: <Widget>[
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pop(); // This will close the dialog
+                          Navigator.of(context)
+                              .pop(); // This will close the dialog
                           Navigator.of(context).pop(); // This will go back
                         },
                         child: Text('Yes'),
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pop(); // This will close the dialog
+                          Navigator.of(context)
+                              .pop(); // This will close the dialog
                         },
                         child: Text('No'),
                       ),
@@ -180,139 +174,84 @@ class _MyPageState extends State<MyPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DateTimePicker(
-                  type: DateTimePickerType.dateTime, // Change to dateTime
-                  dateMask: 'MMM d, yyyy ', // Date and time format with AM/PM
-                  initialValue: quitDateTime?.toString() ?? '', // Initial value with date and time
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime.now(),
-                  dateLabelText: 'Pick date and time', // Updated label
-                  selectableDayPredicate: (date) {
-                    return true;
-                  },
-                  onChanged: (val) {
-                    setState(() {
-                      quitDateTime = DateTime.parse(val);
-                      dataController.setSelectedDateTime(DateTime.parse(val));
-                    });
+                Obx(() {
+                  String? select =
+                      dateController.getSelectedDateTime.toString();
+                  return DateTimePicker(
+                    type: DateTimePickerType.dateTime,
+                    dateMask: 'MMM d, yyyy h:m',
+                    initialValue: select,
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime.now(),
+                    dateLabelText: 'Pick date and time',
+                    selectableDayPredicate: (date) {
+                      return true;
+                    },
+                    onChanged: (val) {
+                      DateTime selectedDateTime = DateTime.parse(val);
+                      dateController.selectedDate(selectedDateTime);
+                      calculateData();
+                      updateAndCalculateData();
+                      print(dateController.selectedDate);
+                    },
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  );
+                }),
+                SizedBox(height: 20.0),
+                MyTextField(
+                  onchange: () {
                     calculateData();
-                    updateAndCalculateData();
+                    print(DailyTotalCiggarette);
                   },
-                  validator: (val) {
-                    print(val);
-                    return null;
-                  },
-                  onSaved: (val) => print(val),
+                  controller: DailyTotalCiggarette,
+                  label: 'Daily amount of cigarette',
+                  Style: null,
+                  ontap: () {},
+                  readonly: false,
                 ),
                 SizedBox(height: 20.0),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
+                MyTextField(
+                  onchange: () {
                     calculateData();
+                    print(CiggarettePerPack);
                   },
-                  controller: controller2,
-                  style: TextStyle(),
-                  cursorColor: Color(0xFF64C397),
-                  decoration: InputDecoration(
-                    labelText: 'Daily amount of cigarette',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Eina',
-                      color: Color(0xFF64C397),
-                    ),
-                    border: OutlineInputBorder(),
-                    floatingLabelBehavior: FloatingLabelBehavior.auto,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFF64C397),
-                        width: 2,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFF383839),
-                        width: 1,
-                      ),
-                    ),
-                  ),
+                  controller: CiggarettePerPack,
+                  label: 'Cigarette per pack',
+                  Style: null,
+                  ontap: () {},
+                  readonly: false,
                 ),
                 SizedBox(height: 20.0),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
+                MyTextField(
+                  onchange: () {
                     calculateData();
+                    print(PackPrice.text);
                   },
-                  controller: controller3,
-                  style: TextStyle(),
-                  cursorColor: Color(0xFF64C397),
-                  decoration: InputDecoration(
-                    labelText: 'Cigarette per pack',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Eina',
-                      color: Color(0xFF64C397),
-                    ),
-                    border: OutlineInputBorder(),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFF64C397),
-                        width: 2,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFF383839),
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
-                    calculateData();
-                  },
-                  controller: controller4,
-                  style: TextStyle(),
-                  cursorColor: Color(0xFF64C397),
-                  decoration: InputDecoration(
-                    labelText: 'Pack price (Rupees)',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Eina',
-                      color: Color(0xFF64C397),
-                    ),
-                    border: OutlineInputBorder(),
-                    floatingLabelBehavior: FloatingLabelBehavior.auto,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFF64C397),
-                        width: 2,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFF383839),
-                        width: 1,
-                      ),
-                    ),
-                  ),
+                  controller: PackPrice,
+                  label: 'Pack price (Rupees)',
+                  Style: null,
+                  ontap: () {},
+                  readonly: false,
                 ),
                 SizedBox(height: 20.0),
                 ElevatedButton(
                   onPressed: () {
                     calculateData();
                     updateAndCalculateData();
+                    print(CiggarettePerPack.text);
                   },
-                  child: Text('Update and Calculate',style: TextStyle(fontFamily: 'Eina'),),style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xFF64C397),
-                ),
+                  child: Text(
+                    'Update and Calculate',
+                    style: TextStyle(fontFamily: 'Eina'),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color(0xFF64C397),
+                  ),
                 ),
               ],
             ),

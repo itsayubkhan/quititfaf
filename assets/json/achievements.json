@@ -1,0 +1,244 @@
+{
+  "achievements":[
+    {
+      "id": 1,
+      "title": "Fresh Start",
+      "description": "No Smoke for 1 day",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "title": "The First Step",
+      "description": "No Smoke for 1 week",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 3,
+      "title": "Steady Progress",
+      "description": "No Smoke for 2 weeks",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 4,
+      "title": "New Horizons",
+      "description": "No Smoke for 1 month",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 5,
+      "title": "Quartermaster",
+      "description": "No Smoke for 3 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 6,
+      "title": "Halfway Hero",
+      "description": "No Smoke for 6 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 7,
+      "title": "Champion of Change",
+      "description": "No Smoke for 1 year",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 8,
+      "title": "Double Victory",
+      "description": "No Smoke for 2 years",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 9,
+      "title": "Breathe Easy",
+      "description": "No Smoke for 10 days",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 10,
+      "title": "Flavor Savor",
+      "description": "No Smoke for 20 days",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 11,
+      "title": "Lung Legend",
+      "description": "No Smoke for 30 days",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 12,
+      "title": "Fit and Free",
+      "description": "No Smoke for 40 days",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 13,
+      "title": "Heart Strong",
+      "description": "No Smoke for 50 days",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 14,
+      "title": "Money Saver",
+      "description": "No Smoke for 2 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 15,
+      "title": "Piggy Bank Pro",
+      "description": "No Smoke for 3 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 16,
+      "title": "Smart Spender",
+      "description": "No Smoke for 4 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 17,
+      "title": "Thrifty Thrill",
+      "description": "No Smoke for 5 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 18,
+      "title": "Financial Freedom",
+      "description": "No Smoke for 6 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 19,
+      "title": "Motivation Mentor",
+      "description": "No Smoke for 9 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 20,
+      "title": "Buddy Boost",
+      "description": "No Smoke for 1 year",
+      "image": "assets/img/rocket.png"
+    },
+    {
+      "id": 21,
+      "title": "Clean Slate",
+      "description": "No Smoke for 11 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 22,
+      "title": "Smoke-Free Streak",
+      "description": "No Smoke for 12 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 23,
+      "title": "Healthy Habits",
+      "description": "No Smoke for 13 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 24,
+      "title": "Breathe Easy",
+      "description": "No Smoke for 14 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 25,
+      "title": "Fresh Air Fanatic",
+      "description": "No Smoke for 15 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 26,
+      "title": "Lung Warrior",
+      "description": "No Smoke for 16 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 27,
+      "title": "Heart Hero",
+      "description": "No Smoke for 17 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 28,
+      "title": "Money Master",
+      "description": "No Smoke for 18 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 29,
+      "title": "Smoke-Free Superstar",
+      "description": "No Smoke for 19 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 30,
+      "title": "Clean Living",
+      "description": "No Smoke for 20 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 31,
+      "title": "Healthy Lifestyle",
+      "description": "No Smoke for 21 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 32,
+      "title": "Breathe Happy",
+      "description": "No Smoke for 22 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 33,
+      "title": "Smoke-Free Champion",
+      "description": "No Smoke for 23 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 34,
+      "title": "Fresh Start Fanatic",
+      "description": "No Smoke for 24 months",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 35,
+      "title": "Lung Love",
+      "description": "No Smoke for 2 years",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 36,
+      "title": "Heart Health",
+      "description": "No Smoke for 2.5 years",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 37,
+      "title": "Money Magic",
+      "description": "No Smoke for 3 years",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 38,
+      "title": "Smoke-Free Superhero",
+      "description": "No Smoke for 3.5 years",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 39,
+      "title": "Clean Living Legend",
+      "description": "No Smoke for 4 years",
+      "image": "(link unavailable)"
+    },
+    {
+      "id": 40,
+      "title": "Healthy Habits Hero",
+      "description": "No Smoke for 5 years",
+      "image": "(link unavailable)"
+    }
+  ]
+}

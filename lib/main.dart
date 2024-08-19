@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:quitit/Achievments.dart';
-import 'package:quitit/Acievmentspages/nosfor5day.dart';
-import 'package:quitit/Acievmentspages/nosfor10day.dart';
-import 'package:quitit/Acievmentspages/nosfor2day.dart';
-import 'package:quitit/Acievmentspages/nosfor2week.dart';
-import 'package:quitit/Acievmentspages/nosfor1day.dart';
-import 'package:quitit/Acievmentspages/nosfor1week.dart';
+import 'package:quitit/AchievementPage.dart';
+import 'package:quitit/Controllers/datesaver.dart';
 import 'package:quitit/Health.dart';
 import 'package:quitit/Settings.dart';
+import 'package:quitit/Settingspages/CalculatePage.dart';
 import 'package:quitit/Settingspages/Advancedsettings.dart';
 import 'package:quitit/Settingspages/Signin.dart';
 import 'package:quitit/Settingspages/Subscriptionstatus.dart';
@@ -21,13 +17,13 @@ import 'package:quitit/frontpage.dart';
 import 'package:quitit/overallprogress.dart';
 import 'package:quitit/profile.dart';
 import 'package:quitit/Settingspages/Formersmokedata.dart';
-
-import 'Controllers/datasender.dart';
+import 'package:quitit/widgets/demo.dart';
+import 'Settingspages/fsa.dart';
 
 void main() async {
   await GetStorage.init();
   runApp(const MyApp());
-  Get.put(DataController());
+  Get.put(DataSaver());
 }
 
 class MyApp extends StatelessWidget {
